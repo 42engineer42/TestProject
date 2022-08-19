@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["SubTitle"] = Model?.TitleForAddingNewObject;
+    ViewData["Title"] = Model?.TitleForAddingNewObject;
+    Layout = "_Layout";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p style="color:blue">@ViewData["SubTitle"]</p>
+<hr />
+ <form method="post" 
+        asp-page-handler = "Create"
+        asp-route-order="@Model?.CurrentOrder"
+        asp-route-index="@Model?.PageIndex" 
+        asp-route-filter="@Model?.CurrentFilter"
+ >
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    @RenderBody()
+    
+    <div class="form-group">
+        <input type="submit" value="Lisa" class="btn btn-primary" />
+        <button class="btn btn-primary" onclick="history.back()">Tagasi</button>
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Kustuta";
+    Layout = "_Layout";
+    var itemId = Model?.ItemId?? string.Empty;  
+    var token = Model?.Token?? string.Empty;  
+    var errorMessage = Model?.ErrorMessage?? string.Empty;
+}
+
+<h1>@ViewData["Title"]</h1>
+<p class="text-danger">@errorMessage</p>
+<div>
+  
+    @RenderBody()
+    
+    <button class="btn btn-primary" onclick="history.back()">Tagasi</button>
+    
+    <form method="post"
+
+        asp-route-id="@itemId"
+        asp-route-token="@token"
+        asp-page-handler="Delete"
+        asp-route-order="@Model?.CurrentOrder"
+        asp-route-index="@Model?.PageIndex" 
+        asp-route-filter="@Model?.CurrentFilter"
+    >
+        <input type="submit" value="Kustuta" class="btn btn-danger" />   
+    </form>
+</div>

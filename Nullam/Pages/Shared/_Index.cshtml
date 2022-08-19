@@ -1,0 +1,19 @@
+﻿@{
+    var firstDisabled = (Model?.PageIndex != 0)? "": "disabled";
+    var nextDisabled = (Model?.HasNextPage) ? "": "disabled";
+    var prevDisabled = (Model?.HasPreviousPage)? "": "disabled";
+    var lastDisabled = (Model?.PageIndex != Model?.TotalPages-1)? "": "disabled";
+    var showMessage = $"Page {Model?.PageIndex +1} of total pages {Model?.TotalPages}";
+    Layout = "_Layout";
+}
+
+<form method="get"
+      asp-page="./Index" 
+      asp-route-order="@Model?.CurrentOrder"
+      asp-route-index="@Model?.PageIndex" 
+>
+    <input type="hidden" name="handler" value="Index" />
+</form>
+
+   @RenderBody()
+

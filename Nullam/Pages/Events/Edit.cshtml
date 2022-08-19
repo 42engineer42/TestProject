@@ -1,0 +1,14 @@
+﻿@page
+@model Nullam.Pages.Party.EventsPage
+
+@{
+    Layout = "_Edit";
+}
+
+<body>
+    <input type="hidden" asp-for="Item.Id" />
+    <input type="hidden" asp-for="Item.Token" />
+    <partial name = "_EditEvent" />
+</body>
+ 
+            

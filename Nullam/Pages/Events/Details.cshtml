@@ -1,0 +1,24 @@
+﻿@page
+@model Nullam.Pages.Party.EventsPage
+@using Nullam.Pages.Extensions
+@using Nullam.Facade.Party
+
+@{
+    if (Model?.Item.Date < DateTime.Now) {
+        Layout = "_Details";
+    }
+    else {
+       Layout = "_DetailsActive"; 
+    }
+    var forModel = new EventView();
+    var forPersons = new PersonView();
+    var forOrganizations = new OrganizationView();
+    var buttons = new Dictionary<string,string>{ { "VAATA", "EDIT" }, { "KUSTUTA", "DELETE" } };
+}
+
+<body>
+    <partial name = "_ShowEvent" />
+    <h4>Osalejad</h4>
+    @Html.ShowRelatedTable(Model.Persons.Value, forModel, forPersons, Model.ColumnsForPerson, buttons)
+    @Html.ShowRelatedTable(Model.Organizations.Value, forModel, forOrganizations, Model.ColumnsForOrganization, buttons)
+</body>

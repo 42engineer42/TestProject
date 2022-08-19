@@ -1,0 +1,9 @@
+﻿@model Nullam.Pages.Party.OrganizationsPage
+@using Nullam.Pages.Extensions
+
+@Html.MyDropDownFor(m => m.Item.EventId, Model.Events)
+@Html.MyEditorFor(m=>m.Item.Name)
+@Html.MyEditorFor(m=>m.Item.OrganizationCode)
+@Html.MyEditorFor(m=>m.Item.ParticipantsAmount)
+@Html.MyDropDownFor(m=>m.Item.PayingType, Model.PayingTypes)
+@Html.MyEditorFor(m=>m.Item.AdditionalInfo)

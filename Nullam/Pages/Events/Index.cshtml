@@ -1,0 +1,16 @@
+﻿@page
+@model Nullam.Pages.Party.EventsPage
+@using Nullam.Pages.Extensions
+@{
+    Layout="_Index";
+    var buttonsForUpcomingEvents = new Dictionary<string,string>{ { "OSAVÕTJAD", "DETAILS" }, { "<img border=\"0\" alt=\"Remove\" src=\"~/lib/remove.svg\" width=\"50\" height=\"50\"/>", "DELETE" } };
+    var buttonsForPastEvents = new Dictionary<string,string>{ { "OSAVÕTJAD", "DETAILS" } };
+    var upcomingEvents = Model.GetUpcomingEvents(Model?.Items);
+    var pastEvents = Model.GetPastEvents(Model?.Items);
+}
+<body>
+    <h4>Tulevased üritused</h4>
+    @Html.ShowTable(upcomingEvents, buttonsForUpcomingEvents)
+    <h4>Toimunud üritused</h4>
+    @Html.ShowTable(pastEvents, buttonsForPastEvents)
+</body>
