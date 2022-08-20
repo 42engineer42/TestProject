@@ -24,11 +24,13 @@ namespace Nullam.Pages {
         public int TotalPages => Repo.TotalPages;
         public bool HasNextPage  => Repo.HasNextPage;
         public bool HasPreviousPage  => Repo.HasPreviousPage;
+
         public virtual string[] IndexColumns => Array.Empty<string>();
         public virtual string[] ColumnsForPerson => Array.Empty<string>();
         public virtual string[] ColumnsForOrganization => Array.Empty<string>();
         public virtual string TitleForAddingNewObject => string.Empty;
         public virtual string TitleForDetailsView => string.Empty;
+
         protected override IActionResult RedirectToIndex() => RedirectToPage("./Index", "Index", new {
             pageIndex = PageIndex,
             currentFilter = CurrentFilter,
@@ -70,7 +72,5 @@ namespace Nullam.Pages {
                 object[]? obj = propertyInfo ? .GetCustomAttributes(typeof(DisplayNameAttribute), true);
                 return obj?.Cast<DisplayNameAttribute>().Single().DisplayName;
             }, propertyName);
-
-       
     }
 }

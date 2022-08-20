@@ -34,7 +34,7 @@ namespace Nullam.Pages.Party {
 
         public IList<EventView> GetPastEvents(IList<EventView> items) {
             IList<EventView> filteredItems = new List<EventView>();
-            foreach (var item in items) {
+            foreach (EventView item in items) {
                 if (item.Date < DateTime.Now) {
                     filteredItems.Add(item);
                 }
@@ -44,7 +44,7 @@ namespace Nullam.Pages.Party {
 
         public IList<EventView> GetUpcomingEvents(IList<EventView> items) {
             IList<EventView> filteredItems = new List<EventView>();
-            foreach (var item in items) {
+            foreach (EventView item in items) {
                 if (item.Date > DateTime.Now) {
                     filteredItems.Add(item);
                 }

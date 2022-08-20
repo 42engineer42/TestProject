@@ -14,3 +14,13 @@
     <h4>Toimunud üritused</h4>
     @Html.ShowTable(pastEvents, buttonsForPastEvents)
 </body>
+
+<div>
+    <a class="btn btn-primary"
+       asp-page="Create" 
+       asp-page-handler = "Create" 
+       asp-route-order="@Model?.CurrentOrder"
+       asp-route-index="@Model?.PageIndex" 
+       asp-route-filter="@Model?.CurrentFilter"
+    >Lisa üritus</a>
+</div>

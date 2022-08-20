@@ -10,7 +10,7 @@ namespace Nullam.Pages {
         where TView : BaseView, new() 
         where TEntity : BaseEntity
         where TRepo : ICrudRepo<TEntity> {
-        private string homePageUrl = "https://localhost:7017/Events?handler=Index";
+        private string homePageUrl = "https://localhost:7254/Events?handler=Index";
         protected CrudPage(TRepo r) : base(r) { }
         protected override IActionResult GetCreate() => Page();
         protected IActionResult ItemPage() => Item == null ? NotFound() : Page();
