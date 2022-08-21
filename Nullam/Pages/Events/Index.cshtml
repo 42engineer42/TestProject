@@ -8,15 +8,52 @@
     var upcomingEvents = Model.GetUpcomingEvents(Model?.Items);
     var pastEvents = Model.GetPastEvents(Model?.Items);
 }
+<style>
+    .column {
+        float: left;
+        width: 50%;
+    }
+
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    h4 {
+        text-align: center;
+        color: white;
+        background-color: steelblue;
+    }
+</style>
+
 <body>
-    <h4>Tulevased üritused</h4>
-    @Html.ShowTable(upcomingEvents, buttonsForUpcomingEvents)
-    <h4>Toimunud üritused</h4>
-    @Html.ShowTable(pastEvents, buttonsForPastEvents)
+    <div class="row">
+        <div class="column">
+            <p style="background-color:steelblue;text-align: center; color: white;width:600px;height:300px">Tekst</p>
+            <h4>Tulevased üritused</h4>
+            <p>
+                <table>
+                    @Html.ShowTable(upcomingEvents, buttonsForUpcomingEvents)
+                </table>
+            </p>
+        </div>
+
+        <div class="column">
+            <img src="~/lib/pilt.jpg" alt="pink" style="width:600px;height:300px;">
+            <h4>Toimunud üritused</h4>
+            <p>
+                <table>
+                    @Html.ShowTable(pastEvents, buttonsForPastEvents)
+                </table>
+            </p>
+            
+        </div>
+    </div>
 </body>
 
 <div>
-    <a class="btn btn-primary"
+    <a class="btn btn-light"
        asp-page="Create" 
        asp-page-handler = "Create" 
        asp-route-order="@Model?.CurrentOrder"

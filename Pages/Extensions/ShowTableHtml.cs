@@ -16,17 +16,22 @@ namespace Nullam.Pages.Extensions {
             List<object> l = new() {
                 new HtmlString("<table class=\"table\">"),
                 new HtmlString("<thead>"),
-                new HtmlString("<tr>")
+                new HtmlString("<tr>"),
+                new HtmlString("</tr>"),
+                new HtmlString("</thead>"),
+                new HtmlString("<tbody>")
             };
-            l.Add(new HtmlString("<th></th>"));
-            l.Add(new HtmlString("</tr>"));
-            l.Add(new HtmlString("</thead>"));
-            l.Add(new HtmlString("<tbody>"));
             foreach (TView item in items ?? new List<TView>()) {
                 l.Add(new HtmlString("<tr>"));
                 foreach (string name in m.IndexColumns) {
                     l.Add(new HtmlString("<td>"));
-                    l.Add(h.Raw(m.GetValue(name, item)));
+                    if (name == "Name") {
+                        var button = new Dictionary<string, string>() { { m.GetValue(name, item).ToString(), "DETAILS" } };
+                        l.Add(h.ItemButtons(item.Id, button, null));
+                    }
+                    else {
+                        l.Add(h.Raw(m.GetValue(name, item)));
+                    }
                     l.Add(new HtmlString("</td>"));
                 }
                 l.Add(new HtmlString("<td>"));
