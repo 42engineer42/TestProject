@@ -22,12 +22,12 @@ namespace Nullam.Pages.Extensions {
             List<object> l = new() {
                 new HtmlString("<table class=\"table\">"),
                 new HtmlString("<thead>"),
-                new HtmlString("<tr>")
+                new HtmlString("<tr>"),
+                new HtmlString("</tr>"),
+                new HtmlString("</thead>"),
+                new HtmlString("<tbody>")
             };
-            
-            l.Add(new HtmlString("</tr>"));
-            l.Add(new HtmlString("</thead>"));
-            l.Add(new HtmlString("<tbody>"));
+
             foreach (TEntity item in items) {
                 l.Add(new HtmlString("<tr>"));
                 foreach (string name in columnNames) {
