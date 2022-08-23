@@ -1,4 +1,5 @@
-﻿using Nullam.Data;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using Nullam.Data;
 using Nullam.Data.Party;
 
 namespace Nullam.Domain.Party {
