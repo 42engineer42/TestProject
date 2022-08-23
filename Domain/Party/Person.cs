@@ -13,7 +13,6 @@ namespace Nullam.Domain.Party {
         public string LastName => GetValue(Data?.LastName);
         public string PersonalCode => GetValue(Data?.PersonalCode);
         public PayingType PayingType => GetValue(Data?.PayingType);
-        public override string ToString() => $"{FirstName} {LastName}";
         public string EventId => GetValue(Data?.EventId);
         public Event? Event => GetRepo.Instance<IEventsRepo>()?.Get(EventId);
     }
