@@ -20,7 +20,7 @@ namespace Nullam.Pages {
             string? displayName = GetDisplayName(propertyInfo);
             return isDesc ? displayName + "_desc" : displayName;
         }
-        private static string? GetDisplayName(PropertyInfo? pi) => pi?.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName;
+        internal static string? GetDisplayName(PropertyInfo? pi) => pi?.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName;
         private static string? ToCurrentOrder(string? value) {
             bool isDesc = value?.Contains("_desc") ?? false;
             string? displayName = value?.Replace("_desc", string.Empty);
@@ -30,7 +30,7 @@ namespace Nullam.Pages {
             }
             return value;
         }
-        private static bool IsThisDisplayName(PropertyInfo propertyInfo, string? displayName) => GetDisplayName(propertyInfo) == displayName; 
+        internal static bool IsThisDisplayName(PropertyInfo propertyInfo, string? displayName) => GetDisplayName(propertyInfo) == displayName; 
         public string? SortOrder(string displayName) => Repo.SortOrder(ToCurrentOrder(displayName)); 
     }
 }

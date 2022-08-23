@@ -16,7 +16,7 @@ namespace Nullam.Pages {
             get => Repo.PageIndex;
             set => Repo.PageIndex = value;
         }
-        protected override void SetAttributes(int pageIndex, string? currentFilter, string? sortOrder) {
+        protected internal override void SetAttributes(int pageIndex, string? currentFilter, string? sortOrder) {
             PageIndex = pageIndex;
             CurrentFilter = currentFilter;
             CurrentOrder = sortOrder;
@@ -31,7 +31,7 @@ namespace Nullam.Pages {
         public virtual string TitleForAddingNewObject => string.Empty;
         public virtual string TitleForDetailsView => string.Empty;
 
-        protected override IActionResult RedirectToIndex() => RedirectToPage("./Index", "Index", new {
+        protected internal override IActionResult RedirectToIndex() => RedirectToPage("./Index", "Index", new {
             pageIndex = PageIndex,
             currentFilter = CurrentFilter,
             sortOrder = CurrentOrder} 

@@ -12,25 +12,25 @@ namespace Nullam.Pages {
         where TRepo : ICrudRepo<TEntity> {
         private readonly string homePageUrl = "https://localhost:7254/Events?handler=Index";
         protected CrudPage(TRepo r) : base(r) { }
-        protected override IActionResult GetCreate() => Page();
+        protected internal override IActionResult GetCreate() => Page();
         protected IActionResult ItemPage() => Item == null ? NotFound() : Page();
         protected virtual async Task<IActionResult> GetItemPage(string id) {
             Item = await GetItem(id);
             return Item == null ? NotFound() : Page();
         }
-        protected override async Task<IActionResult> GetDetailsAsync(string id) => await GetItemPage(id);
-        protected override async Task<IActionResult> GetDeleteAsync(string id) {
+        protected internal override async Task<IActionResult> GetDetailsAsync(string id) => await GetItemPage(id);
+        protected internal override async Task<IActionResult> GetDeleteAsync(string id) {
             ErrorMessage = TempData["Error"] as string;
             return await GetItemPage(id);
         }
-        protected override async Task<IActionResult> GetEditAsync(string id) {
+        protected internal override async Task<IActionResult> GetEditAsync(string id) {
             string? item = TempData["Item"] as string;
             TView? view = null;
             if (item is not null) view = JsonSerializer.Deserialize<TView>(item);
             if (view is null) return await GetItemPage(id);
             return await GetEditAsync(view);
         }
-        protected async Task<IActionResult> GetEditAsync(TView v) {
+        protected internal async Task<IActionResult> GetEditAsync(TView v) {
             Item = await GetItem(v.Id);
             ModelState.AddModelError(string.Empty,
                 "The record you attempted to edit was modified by another user after you. The "
@@ -48,12 +48,12 @@ namespace Nullam.Pages {
             }
             return ItemPage();
         }
-        protected override async Task<IActionResult> PostCreateAsync() {
+        protected internal override async Task<IActionResult> PostCreateAsync() {
             if (!ModelState.IsValid) return Page();
             _ = await Repo.AddAsync(ToObject(Item));
             return Redirect(homePageUrl);
         }
-        protected override async Task<IActionResult> PostDeleteAsync(string id, string? token = null) {
+        protected internal override async Task<IActionResult> PostDeleteAsync(string id, string? token = null) {
             if (id == null) return Redirect(homePageUrl);
             TView view = await GetItem(id);
             if (ConcurrencyToken.ToStr(view.Token) == ConcurrencyToken.ToStr()) return Redirect(homePageUrl);
@@ -63,7 +63,7 @@ namespace Nullam.Pages {
             _ = await Repo.DeleteAsync(id);
             return Redirect(homePageUrl);
         }
-        protected override async Task<IActionResult> PostEditAsync() {
+        protected internal override async Task<IActionResult> PostEditAsync() {
             TEntity entity = Repo.Get(Item.Id);
             if (ConcurrencyToken.ToStr(entity.Token) == ConcurrencyToken.ToStr()) {
                 ModelState.AddModelError(string.Empty, "Unable to save. The item was deleted by another user.");
@@ -78,7 +78,7 @@ namespace Nullam.Pages {
             bool updated = await Repo.UpdateAsync(obj);
             return !updated ? NotFound() : Redirect(homePageUrl);
         }
-        protected override async Task<IActionResult> GetIndexAsync() {
+        protected internal override async Task<IActionResult> GetIndexAsync() {
             List<TEntity> list = await Repo.GetAsync();
             Items = new List<TView>();
             foreach (TEntity obj in list) {

@@ -9,8 +9,8 @@ namespace Nullam.Pages.Party {
     public class PersonsPage : PagedPage<PersonView, Person, IPersonsRepo> {
         private readonly IEventsRepo events;
         public PersonsPage(IPersonsRepo r, IEventsRepo e) : base(r) => events = e;
-        protected override Person ToObject(PersonView? item) => new PersonViewFactory().Create(item);
-        protected override PersonView ToView(Person? entity) => new PersonViewFactory().Create(entity);
+        protected internal override Person ToObject(PersonView? item) => new PersonViewFactory().Create(item);
+        protected internal override PersonView ToView(Person? entity) => new PersonViewFactory().Create(entity);
         public override string[] IndexColumns { get; } = new[] {
             nameof(PersonView.FirstName),
             nameof(PersonView.LastName),

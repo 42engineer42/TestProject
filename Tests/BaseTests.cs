@@ -7,7 +7,7 @@ using Nullam.Aids;
 namespace Nullam.Tests {
     public abstract class BaseTests<TClass, TBaseClass> : TypeTests where TClass : class where TBaseClass : class {
         protected TClass Obj;
-        private readonly BindingFlags allFlags = BindingFlags.Public
+        protected readonly BindingFlags allFlags = BindingFlags.Public
                                                  | BindingFlags.NonPublic
                                                  | BindingFlags.Instance
                                                  | BindingFlags.Static;
@@ -71,9 +71,9 @@ namespace Nullam.Tests {
             IsTrue(hasProperties, $"No properties found for {objectA}");
         }
         [TestMethod] public void BaseClassTest() => AreEqual(typeof(TClass).BaseType, typeof(TBaseClass));
-        protected void IsAbstractMethod(string name, params Type[] args) {
-            MethodInfo? methodInfo = typeof(TClass).GetMethod(name, args);
-            AreEqual(true, methodInfo?.IsAbstract, name);
+        protected void IsAbstractMethod(string name, BindingFlags flag, params Type[] args) {
+            var mi = typeof(TClass).GetMethod(name, flag, args);
+            AreEqual(true, mi?.IsAbstract, name);
         }
     }
 }

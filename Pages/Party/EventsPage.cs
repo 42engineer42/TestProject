@@ -6,8 +6,8 @@ using Nullam.Facade.Party;
 namespace Nullam.Pages.Party {
     public class EventsPage : PagedPage<EventView, Event, IEventsRepo> {
         public EventsPage(IEventsRepo r) : base(r) { }
-        protected override Event ToObject(EventView? item) => new EventViewFactory().Create(item);
-        protected override EventView ToView(Event? entity) => new EventViewFactory().Create(entity);
+        protected internal override Event ToObject(EventView? item) => new EventViewFactory().Create(item);
+        protected internal override EventView ToView(Event? entity) => new EventViewFactory().Create(entity);
         public override string[] IndexColumns { get; } = new[] {
             nameof(EventView.Name),
             nameof(EventView.Date)

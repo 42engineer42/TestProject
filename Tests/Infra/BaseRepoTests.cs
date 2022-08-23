@@ -49,16 +49,16 @@ namespace Nullam.Tests.Infra {
             Obj.Clear();
             AreEqual(0, await set.CountAsync());
         }
-        [TestMethod] public void AddTest() => IsAbstractMethod(nameof(Obj.Add), typeof(Person));
-        [TestMethod] public void AddAsyncTest() => IsAbstractMethod(nameof(Obj.AddAsync), typeof(Person));
-        [TestMethod] public void DeleteTest() => IsAbstractMethod(nameof(Obj.Delete), typeof(string));
-        [TestMethod] public void DeleteAsyncTest() => IsAbstractMethod(nameof(Obj.DeleteAsync), typeof(string));
-        [TestMethod] public void GetTest() => IsAbstractMethod(nameof(Obj.Get), typeof(string));
-        [TestMethod] public void GetAllTest() => IsAbstractMethod(nameof(Obj.GetAll), typeof(Func<Person, dynamic>));
-        [TestMethod] public void GetListTest() => IsAbstractMethod(nameof(Obj.Get));
-        [TestMethod] public void GetAsyncTest() => IsAbstractMethod(nameof(Obj.GetAsync), typeof(string));
-        [TestMethod] public void GetListAsyncTest() => IsAbstractMethod(nameof(Obj.GetAsync));
-        [TestMethod] public void UpdateTest() => IsAbstractMethod(nameof(Obj.Update), typeof(Person));
-        [TestMethod] public void UpdateAsyncTest() => IsAbstractMethod(nameof(Obj.UpdateAsync), typeof(Person));
+        [TestMethod] public void AddTest() => IsAbstractMethod(nameof(Obj.Add), allFlags, typeof(Person));
+        [TestMethod] public void AddAsyncTest() => IsAbstractMethod(nameof(Obj.AddAsync), allFlags, typeof(Person));
+        [TestMethod] public void DeleteTest() => IsAbstractMethod(nameof(Obj.Delete), allFlags, typeof(string));
+        [TestMethod] public void DeleteAsyncTest() => IsAbstractMethod(nameof(Obj.DeleteAsync), allFlags, typeof(string));
+        [TestMethod] public void GetTest() => IsAbstractMethod(nameof(Obj.Get), allFlags, typeof(string));
+        [TestMethod] public void GetAllTest() => IsAbstractMethod(nameof(Obj.GetAll), allFlags, typeof(Func<Person, dynamic>));
+        [TestMethod] public void GetListTest() => IsAbstractMethod(nameof(Obj.Get), allFlags);
+        [TestMethod] public void GetAsyncTest() => IsAbstractMethod(nameof(Obj.GetAsync), allFlags, typeof(string));
+        [TestMethod] public void GetListAsyncTest() => IsAbstractMethod(nameof(Obj.GetAsync), allFlags);
+        [TestMethod] public void UpdateTest() => IsAbstractMethod(nameof(Obj.Update), allFlags, typeof(Person));
+        [TestMethod] public void UpdateAsyncTest() => IsAbstractMethod(nameof(Obj.UpdateAsync), allFlags, typeof(Person));
     }
 }

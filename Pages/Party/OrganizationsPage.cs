@@ -8,8 +8,8 @@ namespace Nullam.Pages.Party {
     public class OrganizationsPage : PagedPage<OrganizationView, Organization, IOrganizationsRepo> {
         private readonly IEventsRepo events;
         public OrganizationsPage(IOrganizationsRepo r, IEventsRepo e) : base(r) => events = e;
-        protected override Organization ToObject(OrganizationView? item) => new OrganizationViewFactory().Create(item);
-        protected override OrganizationView ToView(Organization? entity) => new OrganizationViewFactory().Create(entity);
+        protected internal override Organization ToObject(OrganizationView? item) => new OrganizationViewFactory().Create(item);
+        protected internal override OrganizationView ToView(Organization? entity) => new OrganizationViewFactory().Create(entity);
         public override string[] IndexColumns { get; } = new[] {
             nameof(OrganizationView.Name),
             nameof(OrganizationView.OrganizationCode),
