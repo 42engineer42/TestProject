@@ -11,7 +11,6 @@ namespace Nullam.Facade.Party {
         [DisplayName("Perenimi"), Required] public string? LastName { get; set; }
         [DisplayName("Isikukood"), Required] public string? PersonalCode { get; set; }
         [DisplayName("Maksmisviis"), Required] public PayingType? PayingType { get; set; }
-        [DisplayName("Full info")] public string? FullName { get; set; }
         [DisplayName("Üritus"), Required] public string? EventId { get; set; }
     }
     public sealed class PersonViewFactory : BaseViewFactory<PersonView, Person, PersonData> {

@@ -7,9 +7,9 @@ using Nullam.Domain.Party;
 
 namespace Nullam.Facade.Party {
     public sealed class OrganizationView : BaseView {
-        [DisplayName("Ettevõtte juriidiline nimi"), Required] public string? Name { get; set; }
-        [DisplayName("Ettevõttest tulevate osavõtjate arv"), Required] public int? ParticipantsAmount { get; set; }
-        [DisplayName("Ettevõtte registrikood"), Required] public string? OrganizationCode { get; set; }
+        [DisplayName("Juriidiline nimi"), Required] public string? Name { get; set; }
+        [DisplayName("Osavõtjate arv"), Required] public int? ParticipantsAmount { get; set; }
+        [DisplayName("Registrikood"), Required] public string? OrganizationCode { get; set; }
         [DisplayName("Maksmisviis"), Required] public PayingType? PayingType { get; set; }
         [DisplayName("Üritus"), Required] public string? EventId { get; set; }
     }
