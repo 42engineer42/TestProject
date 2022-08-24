@@ -8,7 +8,7 @@ namespace Nullam.Tests.Aids {
         [TestMethod] public void RemoveTest() => AreEqual("abc.def.ghi", Strings.Remove(testStr, "1"));
         [TestMethod] public void IsTypeNameTest() {
             IsFalse(Strings.IsTypeName(testStr));
-            var s = Strings.Remove(testStr, "1");
+            string? s = Strings.Remove(testStr, "1");
             IsFalse(Strings.IsTypeName(s));
             s = Strings.RemoveTail(s);
             IsFalse(Strings.IsTypeName(s));

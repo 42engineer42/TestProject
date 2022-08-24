@@ -5,14 +5,14 @@ using Nullam.Data.Party;
 namespace Nullam.Tests.Aids {
     [TestClass] public class GetNamespaceTests : TypeTests {
         [TestMethod] public void OfTypeTest() {
-            var obj = new PersonData();
-            var name = obj.GetType().Namespace;
-            var namespaceName = GetNamespace.OfType(obj);
+            PersonData? obj = new PersonData();
+            string? name = obj.GetType().Namespace;
+            string? namespaceName = GetNamespace.OfType(obj);
             AreEqual(name, namespaceName);
         }
         [TestMethod] public void OfTypeNullTest() {
             PersonData? obj = null;
-            var n = GetNamespace.OfType(obj);
+            string? n = GetNamespace.OfType(obj);
             AreEqual(string.Empty, n);
         }
     }

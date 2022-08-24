@@ -8,7 +8,7 @@ namespace Nullam.Tests.Aids {
         [TestInitialize] public void Init() => list = new List<int>() { 1, 2, 3, 4, 5, 6 };
         [TestMethod] public void GetFirstTest() => AreEqual(1, Lists.GetFirst(list));
         [TestMethod] public void RemoveTest() {
-            var cnt = Lists.Remove(list, x => x < 4);
+            int? cnt = Lists.Remove(list, x => x < 4);
             AreEqual(3, cnt);
             AreEqual(4, Lists.GetFirst(list));
         }

@@ -11,11 +11,11 @@ namespace Nullam.Tests.Aids {
             def = GetRandom.Int32();
         }
         [TestMethod] public void RunFuncTest() {
-            var actual = Safe.Run(() => expected, def);
+            int actual = Safe.Run(() => expected, def);
             AreEqual(expected, actual);
         }
         [TestMethod] public void RunFuncExceptionTest() {
-            var actual = Safe.Run(() => throw new Exception(), def);
+            int actual = Safe.Run(() => throw new Exception(), def);
             AreEqual(def, actual);
         }
         [TestMethod] public void RunTest() { }

@@ -6,9 +6,9 @@ using Nullam.Data.Party;
 namespace Nullam.Tests.Aids {
     [TestClass] public class GetRandomTests : TypeTests {
         private void test<T>(T min, T max) where T : IComparable<T> {
-            var x = GetRandom.Value(min, max);
-            var y = GetRandom.Value(min, max);
-            var i = 0;
+            dynamic? x = GetRandom.Value(min, max);
+            dynamic? y = GetRandom.Value(min, max);
+            int i = 0;
             while (x == y) {
                 y = GetRandom.Value(min, max);
                 if (i == 2) AreNotEqual(x, y);
@@ -64,15 +64,15 @@ namespace Nullam.Tests.Aids {
                  new object[]{ DateTime.MinValue, DateTime.MinValue.AddYears(100) }
             };
         [TestMethod] public void StringTest() {
-            var x = GetRandom.Value<string>();
-            var y = GetRandom.Value<string>();
+            dynamic? x = GetRandom.Value<string>();
+            dynamic? y = GetRandom.Value<string>();
             IsInstanceOfType(x, typeof(string));
             IsInstanceOfType(y, typeof(string));
             AreNotEqual(x, y);
         }
         [TestMethod] public void ValueTest() {
-            var x = GetRandom.Value<PersonData>() as PersonData;
-            var y = GetRandom.Value<PersonData>() as PersonData;
+            PersonData? x = GetRandom.Value<PersonData>() as PersonData;
+            PersonData? y = GetRandom.Value<PersonData>() as PersonData;
             IsNotNull(x);
             IsNotNull(y);
             AreNotEqual(x.Id, y.Id, nameof(x.Id));
@@ -81,15 +81,14 @@ namespace Nullam.Tests.Aids {
             AreNotEqual(x.PersonalCode, y.PersonalCode, nameof(x.PersonalCode));
             AreNotEqual(x.EventId, y.EventId, nameof(x.EventId));
         }
-        [TestMethod] public void EnumOfGenericTest() => test(() => GetRandom.EnumOf<PayingType>());
-        
+
         [DataRow(typeof(PayingType))]
         [TestMethod] public void EnumOfTest(Type t) => test(() => GetRandom.EnumOf(t));
 
-        private void test<T>(Func<T> f, int count = 5) {
-            var x = f();
-            var y = f();
-            var i = 0;
+        private void test<T>(Func<T> f, int count = 10) {
+            T x = f();
+            T y = f();
+            int i = 0;
             while (x.Equals(y)) {
                 y = f();
                 if (i == count) AreNotEqual(x, y);

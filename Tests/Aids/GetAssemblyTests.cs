@@ -21,13 +21,13 @@ namespace Nullam.Tests.Aids {
         [TestMethod] public void ByNameTest() { }
         [TestMethod] public void OfTypeTest() {
             assemblyName = $"{nameof(Nullam)}.{nameof(Nullam.Data)}";
-            var obj = new EventData();
+            EventData? obj = new EventData();
             assembly = GetAssembly.OfType(obj);
         }
         [TestMethod] public void TypesTest() {
             var l = GetAssembly.GetTypes(assembly);
             IsTrue(typenames.Length <= (l?.Count ?? -1));
-            foreach (var n in typenames) AreEqual(l?.FirstOrDefault(x => x.Name == n)?.Name, n);
+            foreach (string? n in typenames) AreEqual(l?.FirstOrDefault(x => x.Name == n)?.Name, n);
             IsNull(l?.FirstOrDefault(x => x.Name == GetRandom.String()));
         }
     }

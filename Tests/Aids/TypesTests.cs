@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Reflection;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Nullam.Aids;
 using Nullam.Data;
 using Nullam.Data.Party;
@@ -32,7 +33,7 @@ namespace Nullam.Tests.Aids {
         [TestMethod] public void IsRealTypeTest() {
             IsTrue(type.IsRealType());
             IsTrue(typeof(BaseData).IsRealType());
-            var a = GetAssembly.OfType(this);
+            Assembly? a = GetAssembly.OfType(this);
             var allTypes = (a?.GetTypes() ?? Array.Empty<Type>()).ToList();
             var realTypes = allTypes?.FindAll(t => t.IsRealType());
             IsNotNull(realTypes);
@@ -61,8 +62,8 @@ namespace Nullam.Tests.Aids {
             IsFalse(GetType().HasAttribute<TestMethodAttribute>());
         }
         [TestMethod] public void MethodTest() {
-            var n = nameof(MethodTest);
-            var m = GetType().GetMethod(n);
+            string? n = nameof(MethodTest);
+            MethodInfo? m = GetType().GetMethod(n);
             AreEqual(n, m?.Name);
         }
     }

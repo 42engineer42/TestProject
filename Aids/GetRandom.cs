@@ -42,7 +42,7 @@ namespace Nullam.Aids {
         }
         public static dynamic? Value<T>(T? min = default, T? max = default) {
             Type t = GetUnderlyingType(typeof(T));
-            if (IsEnum(t)) return EnumOf<T>();
+            if (IsEnum(t)) return EnumOf(t);
             else if (t == typeof(byte[])) return ConcurrencyToken.ToByteArray(String(1, 8));
             else if (t == typeof(bool)) return Bool();
             else if (t == typeof(DateTime)) return DateTime(Convert.ToDateTime(min), Convert.ToDateTime(max));
@@ -53,7 +53,6 @@ namespace Nullam.Aids {
             else if (t == typeof(string)) return String();
             return TryGetObject<T>();
         }
-        public static dynamic? EnumOf<T>() => EnumOf(typeof(T));
         public static dynamic? EnumOf(Type t) {
             if (!t.IsEnum) return null;
             Array values = Enum.GetValues(t);
