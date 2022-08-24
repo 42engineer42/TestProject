@@ -36,6 +36,7 @@ namespace Nullam.Infra {
             }
             catch { return false; }
         }
+
         public override async Task<List<TDomain>> GetAsync() {
             try {
                 IQueryable<TData> query = CreateSql();

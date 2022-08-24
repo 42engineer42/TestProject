@@ -12,8 +12,7 @@ namespace Nullam.Tests {
     public abstract class HostTests : AssertTests {
         internal static readonly TestHost<Program> Host;
         internal static readonly HttpClient Client;
-        [TestInitialize]
-        public virtual void TestInitialize() {
+        [TestInitialize] public virtual void TestInitialize() {
             (GetRepo.Instance<IEventsRepo>() as EventsRepo)?.Clear();
             (GetRepo.Instance<IOrganizationsRepo>() as OrganizationsRepo)?.Clear();
             (GetRepo.Instance<IPersonsRepo>() as PersonsRepo)?.Clear();

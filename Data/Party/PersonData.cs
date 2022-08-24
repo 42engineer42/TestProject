@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Nullam.Data.Party {
     public sealed class PersonData : BaseData {
-        [Key]
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
         public string? PersonalCode { get; set; }
