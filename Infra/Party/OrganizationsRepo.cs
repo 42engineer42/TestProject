@@ -14,6 +14,7 @@ namespace Nullam.Infra.Party {
                      || x.ParticipantsAmount.ToString().Contains(y)
                      || x.AdditionalInfo.Contains(y)
                      || x.PayingType.ToString().Contains(y)
+                     || x.EventId.Contains(y)
                 );
         }
     }

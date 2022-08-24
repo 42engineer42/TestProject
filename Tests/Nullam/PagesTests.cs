@@ -8,13 +8,12 @@ namespace Nullam.Tests.Nullam {
         public string? Html;
         public HttpResponseMessage? Page;
         //ToDo: needs to be changed according to new layout
-        public async Task GetPageTestAsync<TRepo, TObj, TData>(Func<TData, TObj> toObj, bool? authorized = false)
+        public async Task GetPageTestAsync<TRepo, TObj, TData>(Func<TData, TObj> toObj, string testString)
             where TRepo : class, IRepo<TObj>
             where TObj : BaseEntity, new() {
 
             await SetUpHtmlForTesting<TRepo, TObj, TData>(toObj);
 
-            var testString = GetCorrectTestString(authorized);
             ControlHtmlString(testString);
         }
         public async Task SetUpHtmlForTesting<TRepo, TObj, TData>(Func<TData, TObj> toObj)
@@ -42,11 +41,6 @@ namespace Nullam.Tests.Nullam {
                 .Replace("Get", string.Empty)
                 .Replace(Name, string.Empty);
         public void ControlPageStatues() => AreEqual(HttpStatusCode.OK, Page.StatusCode);
-        public string GetCorrectTestString(bool? authorized)
-            => (authorized is false) ? $"<h1>Index</h1>:<h4>{Name}</h4>" : "Identity/Account/Register:Identity/Account/Login";
-        public void ControlHtmlString(string s) {
-            var strings = s.Split(":") ?? new string[] { s };
-            foreach (var line in strings) IsTrue(Html.Contains(line));
-        }
+        public void ControlHtmlString(string line) => IsTrue(Html.Contains(line));
     } 
 }

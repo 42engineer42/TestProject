@@ -7,9 +7,9 @@ namespace Nullam.Infra {
         where TDomain : BaseEntity<TData>, new() where TData : BaseData, new() {
         protected internal DbContext? Db { get; }
         protected internal DbSet<TData>? Set { get; }
-        protected BaseRepo(DbContext? context, DbSet<TData>? set) {
-            Db = context;
-            Set = set;
+        protected BaseRepo(DbContext? c, DbSet<TData>? s) {
+            Db = c;
+            Set = s;
         }
         internal void Clear() {
             Set?.RemoveRange(Set);

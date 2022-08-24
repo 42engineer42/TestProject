@@ -9,7 +9,7 @@ namespace Nullam.Pages {
         where TView : BaseView, new() 
         where TEntity : BaseEntity
         where TRepo : IBaseRepo<TEntity>{
-        protected readonly TRepo Repo;
+        protected internal TRepo Repo { get; set; }
         public BasePage(TRepo r) => Repo = r;
         [BindProperty] public TView Item { get; set; } = new TView();
         public IList<TView> Items { get; set; } = new List<TView>();
