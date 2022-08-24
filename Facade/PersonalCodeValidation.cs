@@ -48,6 +48,7 @@ public class PersonalCodeValidation : ValidationAttribute {
     }
     private static bool IsControlNumberMatching(char[] numbers, string controlNum, int[] round) {
         int calculatedAmount = numbers.Select((t, i) => int.Parse(t.ToString()) * round[i]).Sum();
-        return calculatedAmount % 11 == int.Parse(controlNum);
+        int calculatedNum = calculatedAmount % 11;
+        return calculatedNum == int.Parse(controlNum);
     }
 }
