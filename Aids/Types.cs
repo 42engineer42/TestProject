@@ -9,8 +9,6 @@ namespace Nullam.Aids {
             | BindingFlags.Static;
         public static bool BelongsTo(this Type? type, string? namespaceName)
             => (type is not null) && type.IsRealType() && type.NameStarts(namespaceName);
-        public static bool NameIs(this Type? type, string? name)
-            => Safe.Run(() => name is not null && (type?.FullName?.Equals(name) ?? false));
         public static bool NameEnds(this Type? type, string? name)
             => Safe.Run(() => name is not null && (type?.FullName?.EndsWith(name) ?? false));
         public static bool NameStarts(this Type? type, string? name)
@@ -24,6 +22,5 @@ namespace Nullam.Aids {
             => Safe.Run(() => type?.IsSubclassOf(subclass) ?? false, false);
         public static bool HasAttribute<TAttribute>(this Type? type) where TAttribute : Attribute
             => Safe.Run(() => type?.GetCustomAttributes<TAttribute>()?.FirstOrDefault() is not null, false);
-        public static MethodInfo? GetMethod(this Type? type, string methodName) => Safe.Run(() => type?.GetMethod(methodName));
     }
 }

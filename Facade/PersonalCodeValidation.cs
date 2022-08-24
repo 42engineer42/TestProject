@@ -47,8 +47,7 @@ public class PersonalCodeValidation : ValidationAttribute {
         return IsControlNumberMatching(secondRoundNums);
     }
     private static bool IsControlNumberMatching(char[] numbers, string controlNum, int[] round) {
-        int calculatedAmount = 0;
-        for (int i = 0; i < numbers.Length; i++) calculatedAmount += int.Parse(numbers[i].ToString()) * round[i];
+        int calculatedAmount = numbers.Select((t, i) => int.Parse(t.ToString()) * round[i]).Sum();
         return calculatedAmount % 11 == int.Parse(controlNum);
     }
 }
