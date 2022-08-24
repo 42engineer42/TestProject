@@ -82,7 +82,7 @@ namespace Nullam.Tests.Aids {
             AreNotEqual(x.EventId, y.EventId, nameof(x.EventId));
         }
 
-        [DataRow(typeof(PayingType))]
+        [DataRow(typeof(EnumsForTesting))]
         [TestMethod] public void EnumOfTest(Type t) => test(() => GetRandom.EnumOf(t));
 
         private void test<T>(Func<T> f, int count = 10) {
@@ -113,5 +113,12 @@ namespace Nullam.Tests.Aids {
         [DataRow(typeof(DateTime?), typeof(DateTime))]
         [TestMethod] public void GetUnderlyingTypeTest(Type nullable, Type expected)
             => AreEqual(expected, GetRandom.GetUnderlyingType(nullable));
+    }
+    public enum EnumsForTesting { //for bigger scope
+        [System.ComponentModel.Description("Option 1")] Option1 = 0,
+        [System.ComponentModel.Description("Option 2")] Option2 = 1,
+        [System.ComponentModel.Description("Option 3")] Option3 = 2,
+        [System.ComponentModel.Description("Option 4")] Option4 = 3,
+        [System.ComponentModel.Description("Option 5")] Option5 = 4,
     }
 }
