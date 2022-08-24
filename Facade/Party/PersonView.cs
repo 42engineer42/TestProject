@@ -9,7 +9,7 @@ namespace Nullam.Facade.Party {
     public sealed class PersonView : BaseView {
         [DisplayName("Eesnimi"), Required] public string? FirstName { get; set; }
         [DisplayName("Perenimi"), Required] public string? LastName { get; set; }
-        [DisplayName("Isikukood"), Required] public string? PersonalCode { get; set; }
+        [DisplayName("Isikukood"), Required, PersonalCodeValidation] public string? PersonalCode { get; set; }
         [DisplayName("Maksmisviis"), Required] public PayingType? PayingType { get; set; }
         [DisplayName("Üritus"), Required] public string? EventId { get; set; }
     }

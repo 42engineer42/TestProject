@@ -6,6 +6,13 @@
             => Safe.Run(() => s?.All(x => x.IsNameChar()) ?? false);
         public static bool IsTypeFullName(this string? s)
             => Safe.Run(() => s?.All(x => x.IsFullNameChar()) ?? false);
+
+        public static bool ContainsOnlyDigits(this string? s) {
+            foreach (char c in s) {
+                if (!char.IsDigit(c)) return false;
+            }
+            return true;
+        }
         public static string RemoveTail(this string? s, char separator = '.') {
             if (string.IsNullOrEmpty(s)) return string.Empty;
             for (int i = s.Length; i > 0; i--) {
