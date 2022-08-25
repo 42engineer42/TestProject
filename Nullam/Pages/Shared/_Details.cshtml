@@ -6,11 +6,40 @@
     var itemId = Model?.ItemId?? string.Empty; 
 }
 
-<h1>@ViewData["Title"]</h1>
+<style>
+    .wrapper {
+        display: flex;
+        width: 100%;
+        flex: auto;
+    }
 
+    .title {
+      background-color: steelblue;
+      color: white;
+      text-align: center;
+      width: 25%;
+      aspect-ratio: 20/1;
+    }
+
+    .picture-div {
+      background-image: url('lib/libled.jpg');
+      background-position: center;
+      background-size: cover;
+      width: 75%;
+      aspect-ratio: 20/1;
+    }
+</style>
+
+<div class="wrapper">
+    <div class="title">
+        <h1>@ViewData["Title"]</h1>
+    </div>
+    <div class="picture-div"> </div>
+</div>
+
+<p style="color:steelblue">@ViewData["SubTitle"]</p>
+<hr />
 <div>
-    <h4>@ViewData["SubTitle"]</h4>
-    <hr />
 
    @RenderBody()
 

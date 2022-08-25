@@ -3,11 +3,41 @@
     Layout = "_Layout";
     var itemId = Model?.ItemId?? string.Empty;  
     var token = Model?.Token?? string.Empty;  
-    var errorMessage = Model?.ErrorMessage?? string.Empty;
 }
 
-<h1>@ViewData["Title"]</h1>
-<p class="text-danger">@errorMessage</p>
+<style>
+    .wrapper {
+        display: flex;
+        width: 100%;
+        flex: auto;
+    }
+
+    .title {
+      background-color: steelblue;
+      color: white;
+      text-align: center;
+      width: 25%;
+      aspect-ratio: 10/1;
+    }
+
+    .picture-div {
+      background-image: url('lib/libled.jpg');
+      background-position: center;
+      background-size: cover;
+      width: 75%;
+      aspect-ratio: 10/1;
+    }
+</style>
+
+<div class="wrapper">
+    <div class="title">
+        <h1>@ViewData["Title"]</h1>
+    </div>
+    <div class="picture-div"> </div>
+</div>
+
+<p style="color:steelblue">@ViewData["SubTitle"]</p>
+<hr />
 <div>
   
     @RenderBody()
