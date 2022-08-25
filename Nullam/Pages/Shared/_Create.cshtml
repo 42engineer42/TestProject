@@ -4,9 +4,38 @@
     Layout = "_Layout";
 }
 
-<h1>@ViewData["Title"]</h1>
+<style>
+    .wrapper {
+        display: flex;
+        width: 100%;
+        flex: auto;
+    }
 
-<p style="color:blue">@ViewData["SubTitle"]</p>
+    .title {
+      background-color: steelblue;
+      color: white;
+      text-align: center;
+      width: 50%;
+      aspect-ratio: 10/1;
+    }
+
+    .image-div {
+      background-image: url('lib/libled.jpg');
+      background-position: center;
+      background-size: cover;
+      width: 50%;
+      aspect-ratio: 10/1;
+    }
+</style>
+
+<div class="wrapper">
+    <div class="title">
+        <h1>@ViewData["Title"]</h1>
+    </div>
+    <div class="image-div"> </div>
+</div>
+
+<p style="color:steelblue">@ViewData["SubTitle"]</p>
 <hr />
  <form method="post" 
         asp-page-handler = "Create"

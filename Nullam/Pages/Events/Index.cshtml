@@ -25,12 +25,50 @@
         color: white;
         background-color: steelblue;
     }
+
+    .wrapper {
+        display: flex;
+        width: 100%;
+        flex: auto;
+    }
+
+    .paragraph {
+      background-color: steelblue;
+      color: white;
+      border:solid;
+      border-width:30px;
+      border-color:steelblue;
+      text-align: center;
+      width: 50%;
+      aspect-ratio: 2/1;
+    }
+
+    .image-div {
+      background-image: url('lib/pilt.jpg');
+      background-position: center;
+      background-size: cover;
+      width: 50%;
+      aspect-ratio: 2/1;
+    }
 </style>
 
 <body>
+    <div class="wrapper">
+        <div class="paragraph">
+            <p style="display: inline-block; font-size: 125%; text-align:left; word-wrap: break-word;"> 
+                Sed nec elit vestibulum, tincidunt orci et, sagittis
+                ex. Vestibulum rutrum neque suscipit ante 
+                mattis maximus. Nulla non sapien viverra 
+                lobortis lorem non, accumsan metus.
+            </p>
+        </div>
+        <div class="image-div"> </div>
+    </div>
+
+    <br />
+
     <div class="row">
         <div class="column">
-            <p style="background-color:steelblue;text-align: center; color: white;width:600px;height:300px">Tekst</p>
             <h4>Tulevased üritused</h4>
             <p>
                 <table>
@@ -40,7 +78,6 @@
         </div>
 
         <div class="column">
-            <img src="~/lib/pilt.jpg" alt="pink" style="width:600px;height:300px;">
             <h4>Toimunud üritused</h4>
             <p>
                 <table>
