@@ -15,8 +15,10 @@ namespace Nullam.Facade.Party {
     }
     public class EventDateValidation : ValidationAttribute {
         public override bool IsValid(object value) {
-            string dateAsString = value.ToString().Replace(".", "/");
+            string dateAsString = value.ToString()!.Replace(".", "/");
+            if (!DateTime.TryParse(dateAsString, out DateTime _)) return false;
             return DateTime.Parse(dateAsString) >= DateTime.Now;
         }
     }
 }
+ 
