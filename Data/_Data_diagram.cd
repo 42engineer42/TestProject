@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Nullam.Data.Party.EventData">
+    <Position X="6" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAABAEAAAAAAAAA=</HashCode>
+      <FileName>Party\EventData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nullam.Data.Party.OrganizationData">
+    <Position X="8.5" Y="4.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgEBAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Party\OranizationData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nullam.Data.Party.PersonData">
+    <Position X="11.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAoEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Party\PersonData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nullam.Data.BaseData">
+    <Position X="8.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAACAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>BaseData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Nullam.Data.PayingType">
+    <Position X="13.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PayingType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

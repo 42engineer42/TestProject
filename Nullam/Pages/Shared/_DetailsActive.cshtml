@@ -1,9 +1,11 @@
 ﻿@model Nullam.Pages.Party.EventsPage
+@using Nullam.Pages.Extensions
 @{
     ViewData["SubTitle"] = Model?.TitleForDetailsView;
     ViewData["Title"] = Model?.TitleForDetailsView;
     Layout = "_Layout";
     var itemId = Model?.ItemId?? string.Empty; 
+    var token = Model?.Token?? string.Empty;  
 }
 
 <style>
@@ -39,6 +41,10 @@
 
 <p style="color:steelblue">@ViewData["SubTitle"]</p>
 <hr />
+
+<div>
+   @Html.MyBtn("Muuda", "EDIT", itemId, "Events")
+</div>
 <div>
 
    @RenderBody()
@@ -63,4 +69,5 @@
        asp-route-index="@Model?.PageIndex" 
        asp-route-filter="@Model?.CurrentFilter"
     >Tagasi</a>
+
 </div>
